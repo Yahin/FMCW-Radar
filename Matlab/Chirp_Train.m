@@ -22,5 +22,6 @@ for i=1:N_chirps
 end    
 
 Range_dopp = fft2(Beat_matrix);
+Out = CFAR_2D(Range_dopp);
 figure;
-imagesc(abs(Range_dopp)); 
+imagesc(abs(Out)); 
