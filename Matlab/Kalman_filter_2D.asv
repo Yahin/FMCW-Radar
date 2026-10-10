@@ -5,16 +5,16 @@ true_range = 50 + 30 * time; % Starts at 50m, drives at 30m/s
 true_velocity = 30 * ones(1, length(time));
 
 noisy_range = true_range + randn(1, length(time)) * 2; % Add +/- 2m of static noise
-noisy_velocity = true_velocity + randn(1, length(time)) * 0.5;
+noisy_velocity = true_velocity + randn(1, length(time)) * 1;
 
 
 X = [50; 2];      % Initial guess 
 F = [1 dt; 0 1];  % State Transition Matrix (Position & Velocity)
-H = [1 0; 0 1];   % Measurement Matrix
+H = [1 0; 0 1];        % Measurement Matrix (we only measure position, not velocity directly)
 
 
 P = [10 0; 0 10]; % Initial Uncertainty
-R = [4 0; 0 1];          % Sensor Noise 
+R = 4;            % Sensor Noise 
 Q = [0.1 0; 0 0.1]; % Process Noise 
 
 
